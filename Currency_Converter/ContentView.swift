@@ -8,6 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var showExchangeInfo = false
+    @State var showSelectCurrency = false
+    
+    @State var leftAmount = ""
+    @State var rightAmount = ""
+    
+//    it gives where on our screen we are currently focussed
+    @FocusState var leftTyping
+    @FocusState var rightTyping
+    
+    @State var leftCurrency: Currency = .silverPiece
+    @State var rightCurrency: Currency = .goldPiece
     var body: some View {
         ZStack{
             //background Image
@@ -36,20 +48,32 @@ struct ContentView: View {
                         //currency
                         HStack{
                             //currency image
-                            Image(.silverpiece)
+                            Image(leftCurrency.image)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 33)
                             
                             //currency text
-                            Text("Silver Piece")
+                            Text(leftCurrency.name)
                             //headline makes font thick
                                 .font(.headline)
                                 .foregroundStyle(.white)
                         }
+                        .padding(.bottom, -5)
+                        .onTapGesture {
+                            showSelectCurrency.toggle()
+                        }
                         
                         //textfield
-                        Text("Textfields")
+                        TextField("Amount", text: $leftAmount)
+                            .textFieldStyle(.roundedBorder)
+                            .focused($leftTyping)
+                            .onChange(of: leftAmount) {
+                                if leftTyping{
+                                    rightAmount = leftCurrency.convert(leftAmount, to: rightCurrency)
+                                }
+                            }
+                        
                     }
                     
                     //equal sign
@@ -63,28 +87,60 @@ struct ContentView: View {
                         //currency
                         HStack{
                             //currency text
-                            Text("Gold Piece")
+                            Text(rightCurrency.name)
                                 .font(.headline)
                                 .foregroundStyle(.white)
                             
                             //currency image
-                            Image(.goldpiece)
+                            Image(rightCurrency.image)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 33)
                         }
+                        .padding(.bottom, -5)
+                        .onTapGesture {
+                            showSelectCurrency.toggle()
+                        }
                         
                         //textfield
-                        Text("text field")
+                        TextField("Amount", text: $rightAmount)
+                            .textFieldStyle(.roundedBorder)
+                            .multilineTextAlignment(.trailing)
+                            .focused($rightTyping)
+                            .onChange(of: rightAmount) {
+                                if rightTyping{
+                                    leftAmount = rightCurrency.convert(rightAmount, to: leftCurrency)
+                                }
+                            }
                     }
+                }
+                .padding()
+                .background(.black.opacity(0.5))
+                .clipShape(.capsule)
+                .sheet(isPresented: $showSelectCurrency) {
+                    SelectCurrency(topCurrency: $leftCurrency, bottomCurrency: $rightCurrency)
                 }
                 
                 Spacer()
                 
-                //info button
-                Image(systemName: "info.circle.fill")
-                    .font(.largeTitle)
-                    .foregroundStyle(.white)
+                HStack{
+                    Spacer()
+                    //info button
+                    Button{
+                        showExchangeInfo.toggle()
+                    } label: {
+                        Image(systemName: "info.circle.fill")
+                            .font(.largeTitle)
+                            .foregroundStyle(.white)
+                    }
+                    .padding(.trailing)
+                    .sheet(isPresented: $showExchangeInfo) {
+                        ExchangeInfo()
+                    }
+                }
+                
+                
+                
             }
 //            .border(.blue)
         }
