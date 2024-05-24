@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		141091EB2BFFD91900598B4B /* CurrencyTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141091EA2BFFD91900598B4B /* CurrencyTip.swift */; };
 		146283A62BEACA31004A32DC /* Currency_ConverterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146283A52BEACA31004A32DC /* Currency_ConverterApp.swift */; };
 		146283A82BEACA31004A32DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146283A72BEACA31004A32DC /* ContentView.swift */; };
 		146283AA2BEACA32004A32DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 146283A92BEACA32004A32DC /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		141091EA2BFFD91900598B4B /* CurrencyTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTip.swift; sourceTree = "<group>"; };
 		146283A22BEACA31004A32DC /* Currency_Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Currency_Converter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		146283A52BEACA31004A32DC /* Currency_ConverterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency_ConverterApp.swift; sourceTree = "<group>"; };
 		146283A72BEACA31004A32DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				146283A52BEACA31004A32DC /* Currency_ConverterApp.swift */,
+				141091EA2BFFD91900598B4B /* CurrencyTip.swift */,
 				146283D72BF35896004A32DC /* Currency.swift */,
 				146283A72BEACA31004A32DC /* ContentView.swift */,
 				146283D52BF1EBEB004A32DC /* CurrencyIcon.swift */,
@@ -280,6 +283,7 @@
 				146283D42BF1E741004A32DC /* SelectCurrency.swift in Sources */,
 				146283D02BEFFE90004A32DC /* ExchangeInfo.swift in Sources */,
 				146283A82BEACA31004A32DC /* ContentView.swift in Sources */,
+				141091EB2BFFD91900598B4B /* CurrencyTip.swift in Sources */,
 				146283A62BEACA31004A32DC /* Currency_ConverterApp.swift in Sources */,
 				146283D82BF35896004A32DC /* Currency.swift in Sources */,
 				146283D62BF1EBEB004A32DC /* CurrencyIcon.swift in Sources */,
